@@ -1,5 +1,6 @@
 import HydrateFallback from "../components/HydrateFallback";
 import RootLayout from "../components/RootLayout";
+import Home from "../pages/Home";
 
 export default [
   {
@@ -10,7 +11,7 @@ export default [
     children: [
       {
         index: true,
-        element: <div>Home</div>,
+        element: <Home />,
       },
     ],
   },
