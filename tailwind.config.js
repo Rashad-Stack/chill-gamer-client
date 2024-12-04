@@ -1,14 +1,15 @@
-import { colors, keepTheme } from "keep-react/keepTheme";
+import { keepTheme } from "keep-react/keepTheme";
+// const defaultTheme = require("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    // colors: {
-    //   primary: {
-    //     500: "#45f882",
-    //   },
-    //   secondary: colors.green,
-    // },
+    extend: {
+      fontFamily: {
+        sans: ["'Orbitron'", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
 };
 
@@ -29,7 +30,9 @@ const colorsPalette = {
   primary: {
     500: "#45f882",
   },
-  secondary: colors.green,
+  secondary: {
+    500: "#0f161b",
+  },
 };
 
 export default keepTheme(config, colorsPalette);
