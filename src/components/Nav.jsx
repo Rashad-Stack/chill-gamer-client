@@ -1,7 +1,4 @@
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
   Navbar,
   NavbarBrand,
   NavbarCollapse,
@@ -11,11 +8,12 @@ import {
   NavbarList,
 } from "keep-react";
 import { NavLink } from "react-router";
+import ProfileInfo from "./ProfileInfo";
 import ThemeSwitcher from "./ThemeSwitcher ";
 
 export const Nav = () => {
   return (
-    <Navbar className="dark:bg-secondary-500 border-none">
+    <Navbar className="dark:bg-dark border-none">
       <NavbarContainer>
         <NavbarBrand className="flex items-center">
           <img src="logo.jpg" alt="keep" className="w-7 h-7 md:w-8 md:h-8" />
@@ -62,12 +60,7 @@ export const Nav = () => {
           </NavLink>
         </NavbarList>
         <div className="flex items-center gap-2">
-          <Avatar className="w-8 h-8">
-            <AvatarImage src="/images/avatar/avatar-4.png" />
-            <AvatarFallback className="border border-primary-500 dark:text-white">
-              KR
-            </AvatarFallback>
-          </Avatar>
+          <ProfileInfo />
           <ThemeSwitcher />
           <NavbarCollapseBtn />
         </div>
