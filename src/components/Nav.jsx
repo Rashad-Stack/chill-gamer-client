@@ -35,7 +35,7 @@ export const Nav = () => {
                     : "text-gray-700 dark:text-white"
                 }`
               }>
-              <NavbarItem>{item.title}</NavbarItem>
+              <NavbarItem className="!text-inherit">{item.title}</NavbarItem>
             </NavLink>
           ))}
           <NavLink
@@ -43,22 +43,22 @@ export const Nav = () => {
             className={({ isActive }) =>
               `${
                 isActive
-                  ? "font-bold text-primary-500"
+                  ? "font-bold text-primary-500 dark:text-primary-500"
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem>Login</NavbarItem>
+            <NavbarItem className="!text-inherit">Login</NavbarItem>
           </NavLink>
           <NavLink
             to="/register"
             className={({ isActive }) =>
               `${
                 isActive
-                  ? "font-bold text-primary-500"
+                  ? "font-bold text-primary-500 dark:text-primary-500"
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem> Register</NavbarItem>
+            <NavbarItem className="!text-inherit">Register</NavbarItem>
           </NavLink>
         </NavbarList>
         <div className="flex items-center gap-2">
@@ -79,11 +79,11 @@ export const Nav = () => {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "font-bold text-primary-500"
+                    ? "font-bold text-primary-500 dark:text-primary-500"
                     : "text-gray-700 dark:text-white"
                 }`
               }>
-              <NavbarItem>{item.title}</NavbarItem>
+              <NavbarItem className="!text-inherit">{item.title}</NavbarItem>
             </NavLink>
           ))}
           <NavLink
@@ -91,22 +91,22 @@ export const Nav = () => {
             className={({ isActive }) =>
               `${
                 isActive
-                  ? "font-bold text-primary-500"
+                  ? "font-bold text-primary-500 dark:text-primary-500"
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem>Login</NavbarItem>
+            <NavbarItem className="!text-inherit">Login</NavbarItem>
           </NavLink>
           <NavLink
             to="/register"
             className={({ isActive }) =>
               `${
                 isActive
-                  ? "font-bold text-primary-500"
+                  ? "font-bold text-primary-500 dark:text-primary-500"
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem>Register</NavbarItem>
+            <NavbarItem className="!text-inherit">Register</NavbarItem>
           </NavLink>
         </NavbarCollapse>
       </NavbarContainer>

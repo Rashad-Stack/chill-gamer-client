@@ -2,7 +2,7 @@ import { Switch } from "keep-react";
 import useGlobalState from "../hooks/useGlobalState.js";
 
 const ThemeSwitcher = () => {
-  const { dispatch } = useGlobalState();
+  const { theme, dispatch } = useGlobalState();
 
   const handleThemeChange = (value) => {
     if (value) {
@@ -14,6 +14,7 @@ const ThemeSwitcher = () => {
 
   return (
     <Switch
+      checked={theme === "dark"}
       variant="icon"
       onCheckedChange={handleThemeChange}
       className="border border-primary-500"

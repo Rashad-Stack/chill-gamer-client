@@ -5,7 +5,7 @@ import reducers from "./reducers";
 
 // Initial state
 const initialState = {
-  theme: "system",
+  theme: localStorage.getItem("vite-ui-theme") || null,
   user: null,
   isLoading: true,
 };
@@ -27,13 +27,12 @@ function GlobalStateProvider({
 
     root.classList.remove("light", "dark");
 
-    if (state.theme === "system") {
+    if (state.theme === null) {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"
         : "light";
       root.classList.add(systemTheme);
-      localStorage.setItem(storageKey, state.theme);
       dispatch({ type: "SET_THEME", payload: systemTheme });
       return;
     }
