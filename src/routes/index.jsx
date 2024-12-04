@@ -13,6 +13,22 @@ export default [
         index: true,
         element: <Home />,
       },
+      {
+        path: "/reviews",
+        element: <div>Reviews</div>,
+      },
+      {
+        path: "/watch-list",
+        element: <div>Watchlist</div>,
+      },
+      {
+        path: "/login",
+        element: <div>Watchlist</div>,
+      },
+      {
+        path: "/register",
+        element: <div>Watchlist</div>,
+      },
     ],
   },
 ];

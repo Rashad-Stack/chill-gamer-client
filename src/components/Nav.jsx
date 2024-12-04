@@ -1,4 +1,7 @@
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Navbar,
   NavbarBrand,
   NavbarCollapse,
@@ -26,19 +29,86 @@ export const Nav = () => {
               key={item.title}
               to={item.to}
               className={({ isActive }) =>
-                `${isActive ? "font-bold" : ""} dark:text-white`
+                `${
+                  isActive
+                    ? "font-bold text-primary-500"
+                    : "text-gray-700 dark:text-white"
+                }`
               }>
-              {item.title}
+              <NavbarItem>{item.title}</NavbarItem>
             </NavLink>
           ))}
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "font-bold text-primary-500"
+                  : "text-gray-700 dark:text-white"
+              }`
+            }>
+            <NavbarItem>Login</NavbarItem>
+          </NavLink>
+          <NavLink
+            to="/register"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "font-bold text-primary-500"
+                  : "text-gray-700 dark:text-white"
+              }`
+            }>
+            <NavbarItem> Register</NavbarItem>
+          </NavLink>
         </NavbarList>
-        <NavbarCollapseBtn />
+        <div className="flex items-center gap-2">
+          <Avatar className="w-8 h-8">
+            <AvatarImage src="/images/avatar/avatar-4.png" />
+            <AvatarFallback className="border border-primary-500 dark:text-white">
+              KR
+            </AvatarFallback>
+          </Avatar>
+          <ThemeSwitcher />
+          <NavbarCollapseBtn />
+        </div>
         <NavbarCollapse className="dark:bg-secondary-500">
-          <NavbarItem>Figma</NavbarItem>
-          <NavbarItem>Documentation</NavbarItem>
-          <NavbarItem>Blog</NavbarItem>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.title}
+              to={item.to}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold text-primary-500"
+                    : "text-gray-700 dark:text-white"
+                }`
+              }>
+              <NavbarItem>{item.title}</NavbarItem>
+            </NavLink>
+          ))}
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "font-bold text-primary-500"
+                  : "text-gray-700 dark:text-white"
+              }`
+            }>
+            <NavbarItem>Login</NavbarItem>
+          </NavLink>
+          <NavLink
+            to="/register"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "font-bold text-primary-500"
+                  : "text-gray-700 dark:text-white"
+              }`
+            }>
+            <NavbarItem>Register</NavbarItem>
+          </NavLink>
         </NavbarCollapse>
-        <ThemeSwitcher />
       </NavbarContainer>
     </Navbar>
   );
@@ -48,6 +118,4 @@ const navItems = [
   { title: "Home", to: "/" },
   { title: "All Reviews", to: "/reviews" },
   { title: "Game WatchList", to: "/watch-list" },
-  { title: "Login", to: "/login" },
-  { title: "Register", to: "/register" },
 ];
