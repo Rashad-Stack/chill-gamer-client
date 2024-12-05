@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "keep-react";
 import { Pencil } from "phosphor-react";
+import { Link } from "react-router";
 import DeleteReview from "../components/DeleteReview";
 import SectionTitle from "../components/SectionTitle";
 
@@ -53,9 +54,11 @@ export default function MyReviews() {
               <TableCell>2024</TableCell>
               <TableCell>
                 <div className="space-x-4">
-                  <Button>
-                    <Pencil size={20} />
-                  </Button>
+                  <Link to="/updateReview/:id">
+                    <Button>
+                      <Pencil size={20} />
+                    </Button>
+                  </Link>
                   <DeleteReview />
                 </div>
               </TableCell>

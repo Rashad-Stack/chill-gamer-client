@@ -6,9 +6,11 @@ import RootLayout from "../components/RootLayout";
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
 import Auth from "../pages/Auth";
+import GameWatchlist from "../pages/GameWatchlist";
 import Home from "../pages/Home";
 import MyReviews from "../pages/MyReviews";
 import ReviewDetails from "../pages/ReviewDetails";
+import UpdateReview from "../pages/UpdateReview";
 
 export default [
   {
@@ -30,8 +32,14 @@ export default [
         element: <ReviewDetails />,
       },
       {
-        path: "watch-list",
-        element: <div>Watchlist</div>,
+        path: "myWatchlist",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <GameWatchlist />,
+          },
+        ],
       },
       {
         path: "add-review",
@@ -50,6 +58,16 @@ export default [
           {
             index: true,
             element: <MyReviews />,
+          },
+        ],
+      },
+      {
+        path: "updateReview/:id",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <UpdateReview />,
           },
         ],
       },

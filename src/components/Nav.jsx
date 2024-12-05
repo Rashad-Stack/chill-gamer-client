@@ -124,5 +124,5 @@ const navItems = [
   { title: "All Reviews", to: "/reviews" },
   { title: "Add Review", to: "/add-review" },
   { title: "My Reviews", to: "/my-reviews" },
-  { title: "Game WatchList", to: "/watch-list" },
+  { title: "Game WatchList", to: "/myWatchlist" },
 ];
