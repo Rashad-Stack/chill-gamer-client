@@ -14,6 +14,10 @@ export default [
         element: <Home />,
       },
       {
+        path: "/game/:id",
+        element: <div>Details</div>,
+      },
+      {
         path: "/reviews",
         element: <div>Reviews</div>,
       },
