@@ -122,5 +122,7 @@ export const Nav = () => {
 const navItems = [
   { title: "Home", to: "/" },
   { title: "All Reviews", to: "/reviews" },
+  { title: "Add Review", to: "/add-review" },
+  { title: "My Reviews", to: "/my-reviews" },
   { title: "Game WatchList", to: "/watch-list" },
 ];

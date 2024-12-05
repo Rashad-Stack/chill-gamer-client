@@ -1,7 +1,9 @@
 import HydrateFallback from "../components/HydrateFallback";
 import Login from "../components/Login";
+import PrivateRoute from "../components/PrivateRoute";
 import Register from "../components/Register";
 import RootLayout from "../components/RootLayout";
+import AddReview from "../pages/AddReview";
 import Auth from "../pages/Auth";
 import Home from "../pages/Home";
 
@@ -27,6 +29,26 @@ export default [
       {
         path: "watch-list",
         element: <div>Watchlist</div>,
+      },
+      {
+        path: "add-review",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <AddReview />,
+          },
+        ],
+      },
+      {
+        path: "my-reviews",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <div>My Review</div>,
+          },
+        ],
       },
       {
         path: "auth/",
