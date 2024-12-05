@@ -39,7 +39,7 @@ export default function GameCard() {
             <span>X-Box</span>
           </CardDescription>
         </div>
-        <Link to="/game/age-of-mythology-retold" className="block w-fit">
+        <Link to="/review/age-of-mythology-retold" className="block w-fit">
           <Button>Explore Details</Button>
         </Link>
       </CardContent>

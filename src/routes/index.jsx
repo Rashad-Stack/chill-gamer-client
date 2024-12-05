@@ -6,6 +6,7 @@ import RootLayout from "../components/RootLayout";
 import AddReview from "../pages/AddReview";
 import Auth from "../pages/Auth";
 import Home from "../pages/Home";
+import ReviewDetails from "../pages/ReviewDetails";
 
 export default [
   {
@@ -19,12 +20,12 @@ export default [
         element: <Home />,
       },
       {
-        path: "game/:id",
-        element: <div>Details</div>,
-      },
-      {
         path: "reviews",
         element: <div>Reviews</div>,
+      },
+      {
+        path: "review/:id",
+        element: <ReviewDetails />,
       },
       {
         path: "watch-list",
