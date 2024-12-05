@@ -33,7 +33,9 @@ export const Nav = () => {
                     : "text-gray-700 dark:text-white"
                 }`
               }>
-              <NavbarItem className="!text-inherit">{item.title}</NavbarItem>
+              <NavbarItem className="!text-inherit dark:hover:!text-white">
+                {item.title}
+              </NavbarItem>
             </NavLink>
           ))}
           <NavLink
@@ -45,7 +47,9 @@ export const Nav = () => {
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem className="!text-inherit">Login</NavbarItem>
+            <NavbarItem className="!text-inherit dark:hover:!text-white">
+              Login
+            </NavbarItem>
           </NavLink>
           <NavLink
             to="/register"
@@ -56,7 +60,9 @@ export const Nav = () => {
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem className="!text-inherit">Register</NavbarItem>
+            <NavbarItem className="!text-inherit dark:hover:!text-white">
+              Register
+            </NavbarItem>
           </NavLink>
         </NavbarList>
         <div className="flex items-center gap-2">
@@ -76,7 +82,9 @@ export const Nav = () => {
                     : "text-gray-700 dark:text-white"
                 }`
               }>
-              <NavbarItem className="!text-inherit">{item.title}</NavbarItem>
+              <NavbarItem className="!text-inherit dark:hover:!text-white">
+                {item.title}
+              </NavbarItem>
             </NavLink>
           ))}
           <NavLink
@@ -88,7 +96,9 @@ export const Nav = () => {
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem className="!text-inherit">Login</NavbarItem>
+            <NavbarItem className="!text-inherit dark:hover:!text-white">
+              Login
+            </NavbarItem>
           </NavLink>
           <NavLink
             to="/register"
@@ -99,7 +109,9 @@ export const Nav = () => {
                   : "text-gray-700 dark:text-white"
               }`
             }>
-            <NavbarItem className="!text-inherit">Register</NavbarItem>
+            <NavbarItem className="!text-inherit dark:hover:!text-white">
+              Register
+            </NavbarItem>
           </NavLink>
         </NavbarCollapse>
       </NavbarContainer>

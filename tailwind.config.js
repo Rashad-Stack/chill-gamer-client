@@ -8,6 +8,7 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["'Orbitron'", ...defaultTheme.fontFamily.sans],
+        inter: ["'Inter'", ...defaultTheme.fontFamily.sans],
       },
     },
   },

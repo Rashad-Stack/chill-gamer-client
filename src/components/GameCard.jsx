@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "keep-react";
+import { Activity, Download, GameController } from "phosphor-react";
 import { Link } from "react-router";
 import GameRating from "./GameRating";
 export default function GameCard() {
@@ -22,12 +23,22 @@ export default function GameCard() {
       </CardHeader>
       <CardContent className="space-y-3">
         <CardTitle>Age of Mythology: Retold</CardTitle>
-        <GameRating />
-        <CardDescription className="line-clamp-2">
-          Combining the best elements of the beloved Age of Mythology with
-          modern real-time strategy design and visuals, Retold is an epic and
-          innovative experience for everyone.
-        </CardDescription>
+        <div className="flex gap-1 items-center">
+          <GameRating value={1} />
+          <span>4.8</span> <span>(50K)</span>
+        </div>
+        <div className="flex items-center justify-between">
+          <CardDescription className="flex gap-1 items-center">
+            <Download size={20} className="text-primary-500" /> <span>50M</span>
+          </CardDescription>
+          <CardDescription className="flex gap-1 items-center">
+            <Activity size={20} className="text-primary-500" /> <span>50M</span>
+          </CardDescription>
+          <CardDescription className="flex gap-1 items-center">
+            <GameController size={20} className="text-primary-500" />
+            <span>X-Box</span>
+          </CardDescription>
+        </div>
         <Link to="/game/age-of-mythology-retold" className="block w-fit">
           <Button>Explore Details</Button>
         </Link>
