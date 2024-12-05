@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container lg:max-w-7xl flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
         <div className="flex-shrink-0 mx-auto text-center md:mx-0 md:text-left md:pl-20">
           <Link className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
-            <img src="logo.jpg" alt="keep" className="w-7 h-7 md:w-8 md:h-8" />
+            <img src="/logo.jpg" alt="keep" className="w-7 h-7 md:w-8 md:h-8" />
             <span className="dark:text-white text-heading-5 font-bold hidden md:block">
               hill Gamer
             </span>

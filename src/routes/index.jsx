@@ -1,5 +1,8 @@
 import HydrateFallback from "../components/HydrateFallback";
+import Login from "../components/Login";
+import Register from "../components/Register";
 import RootLayout from "../components/RootLayout";
+import Auth from "../pages/Auth";
 import Home from "../pages/Home";
 
 export default [
@@ -14,24 +17,34 @@ export default [
         element: <Home />,
       },
       {
-        path: "/game/:id",
+        path: "game/:id",
         element: <div>Details</div>,
       },
       {
-        path: "/reviews",
+        path: "reviews",
         element: <div>Reviews</div>,
       },
       {
-        path: "/watch-list",
+        path: "watch-list",
         element: <div>Watchlist</div>,
       },
       {
-        path: "/login",
-        element: <div>Watchlist</div>,
-      },
-      {
-        path: "/register",
-        element: <div>Watchlist</div>,
+        path: "auth/",
+        element: <Auth />,
+        children: [
+          {
+            index: true,
+            element: <Login />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+          {
+            path: "register",
+            element: <Register />,
+          },
+        ],
       },
     ],
   },

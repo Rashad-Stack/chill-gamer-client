@@ -16,7 +16,7 @@ export const Nav = () => {
     <Navbar className="dark:bg-dark border-none">
       <NavbarContainer>
         <NavbarBrand className="flex items-center">
-          <img src="logo.jpg" alt="keep" className="w-7 h-7 md:w-8 md:h-8" />
+          <img src="/logo.jpg" alt="keep" className="w-7 h-7 md:w-8 md:h-8" />
           <span className="dark:text-white text-heading-5 font-bold hidden md:block">
             hill Gamer
           </span>
@@ -39,7 +39,7 @@ export const Nav = () => {
             </NavLink>
           ))}
           <NavLink
-            to="/login"
+            to="/auth/login"
             className={({ isActive }) =>
               `${
                 isActive
@@ -52,7 +52,7 @@ export const Nav = () => {
             </NavbarItem>
           </NavLink>
           <NavLink
-            to="/register"
+            to="/auth/register"
             className={({ isActive }) =>
               `${
                 isActive
@@ -88,7 +88,7 @@ export const Nav = () => {
             </NavLink>
           ))}
           <NavLink
-            to="/login"
+            to="/auth/login"
             className={({ isActive }) =>
               `${
                 isActive
@@ -101,7 +101,7 @@ export const Nav = () => {
             </NavbarItem>
           </NavLink>
           <NavLink
-            to="/register"
+            to="/auth/register"
             className={({ isActive }) =>
               `${
                 isActive
