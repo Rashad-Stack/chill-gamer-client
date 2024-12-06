@@ -25,6 +25,7 @@ import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
 import Auth from "../pages/Auth";
 import DetailBlog from "../pages/DetailBlog";
+import Error from "../pages/Error";
 import GameWatchlist from "../pages/GameWatchlist";
 import Home from "../pages/Home";
 import MyReviews from "../pages/MyReviews";
@@ -35,7 +36,7 @@ export default [
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <div>Error...</div>,
+    errorElement: <Error />,
     hydrateFallbackElement: <HydrateFallback />,
     loader: loadUser,
     children: [
