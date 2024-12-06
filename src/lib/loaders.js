@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { toast } from "keep-react";
 import { redirect } from "react-router";
+import blogs from "../data/blogs";
 import { auth } from "../firebase/config";
 
 // const baseUrl = import.meta.env.VITE_APP_BASE_URL;
@@ -358,3 +359,6 @@ export const getWatchlist = async () => {
     return toast.error(error.message);
   }
 };
+
+export const detailBlog = async ({ params }) =>
+  blogs.find((blog) => blog.id === Number(params.id));

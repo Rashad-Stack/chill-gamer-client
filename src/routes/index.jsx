@@ -9,6 +9,7 @@ import {
   addToWatchList,
   currentUserReviews,
   deleteReview,
+  detailBlog,
   forgotPassword,
   getAllReviews,
   getWatchlist,
@@ -23,6 +24,7 @@ import {
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
 import Auth from "../pages/Auth";
+import DetailBlog from "../pages/DetailBlog";
 import GameWatchlist from "../pages/GameWatchlist";
 import Home from "../pages/Home";
 import MyReviews from "../pages/MyReviews";
@@ -52,6 +54,11 @@ export default [
         element: <ReviewDetails />,
         loader: reviewDetails,
         action: addToWatchList,
+      },
+      {
+        path: "blogs/:id",
+        element: <DetailBlog />,
+        loader: detailBlog,
       },
       {
         path: "myWatchlist",
