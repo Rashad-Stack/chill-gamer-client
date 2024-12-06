@@ -11,6 +11,7 @@ import {
   deleteReview,
   forgotPassword,
   getAllReviews,
+  getWatchlist,
   loadUser,
   login,
   loginWithGoogle,
@@ -59,11 +60,8 @@ export default [
           {
             index: true,
             element: <GameWatchlist />,
+            loader: getWatchlist,
           },
-          // {
-          //   path: "addToWatchlist",
-          //   action: addToWatchList,
-          // },
         ],
       },
       {

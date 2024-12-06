@@ -195,7 +195,7 @@ export const addReview = async ({ request }) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     toast.success("Review added successfully!");
@@ -211,7 +211,7 @@ export const reviewDetails = async ({ params }) => {
     const response = await fetch(`${baseUrl}/reviews/${params.id}`);
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     return response.json();
@@ -226,38 +226,10 @@ export const getAllReviews = async () => {
     const response = await fetch(`${baseUrl}/reviews`);
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     return response.json();
-  } catch (error) {
-    console.error(error);
-    return toast.error(error.message);
-  }
-};
-
-export const addToWatchList = async ({ request }) => {
-  try {
-    // Perform add to watchlist logic here
-    const formData = await request.formData();
-
-    const review = Object.fromEntries(formData);
-    // eslint-disable-next-line no-unused-vars
-    const { _id, ...watchlistItem } = review;
-
-    const watchlistRes = await fetch(`${baseUrl}/watchlists`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(watchlistItem),
-    });
-
-    if (!watchlistRes.ok) {
-      throw new Error(watchlistRes.message);
-    }
-
-    return toast.success("Added to watchlist successfully!");
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
@@ -277,7 +249,7 @@ export const currentUserReviews = async () => {
     );
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     return response.json();
@@ -307,7 +279,7 @@ export const updateReview = async ({ request, params }) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     toast.success("Review updated successfully!");
@@ -325,11 +297,62 @@ export const deleteReview = async ({ params }) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.message);
+      throw new Error(response.statusText);
     }
 
     toast.success("Review deleted successfully!");
     return redirect("/my-reviews");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const addToWatchList = async ({ request }) => {
+  try {
+    // Perform add to watchlist logic here
+    const formData = await request.formData();
+
+    const review = Object.fromEntries(formData);
+    // eslint-disable-next-line no-unused-vars
+    const { _id, ...watchlistItem } = review;
+
+    const watchlistRes = await fetch(`${baseUrl}/watchlists`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(watchlistItem),
+    });
+
+    if (!watchlistRes.ok) {
+      throw new Error(watchlistRes.statusText);
+    }
+
+    return toast.success("Added to watchlist successfully!");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const getWatchlist = async () => {
+  try {
+    const user = await loadUser();
+
+    if (!user) {
+      return [];
+    }
+
+    const response = await fetch(
+      `${baseUrl}/watchlists/currentUserWishlists/${user.email}`
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
