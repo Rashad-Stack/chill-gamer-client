@@ -222,9 +222,15 @@ export const reviewDetails = async ({ params }) => {
   }
 };
 
-export const getAllReviews = async () => {
+export const getAllReviews = async ({ request }) => {
+  const url = new URL(request.url);
+  const filter = url.searchParams.get("filter");
+  const sort = url.searchParams.get("sort");
+
   try {
-    const response = await fetch(`${baseUrl}/reviews`);
+    const response = await fetch(
+      `${baseUrl}/reviews?filter=${filter}&sort=${sort}`
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);

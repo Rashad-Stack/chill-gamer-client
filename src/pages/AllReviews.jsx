@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router";
+import Filter from "../components/Filter";
 import GameCard from "../components/GameCard";
 import SectionTitle from "../components/SectionTitle";
+import Sort from "../components/Sort";
 
 export default function AllReviews() {
   const reviews = useLoaderData();
@@ -8,12 +10,18 @@ export default function AllReviews() {
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
-        <SectionTitle
-          title={{
-            sub: "Discover the best games",
-            main: "All Reviews",
-          }}
-        />
+        <div className="flex items-center justify-between">
+          <SectionTitle
+            title={{
+              sub: "Discover the best games",
+              main: "All Reviews",
+            }}
+          />
+          <div className="flex gap-4 items-center">
+            <Sort />
+            <Filter />
+          </div>
+        </div>
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {reviews && reviews.length ? (
