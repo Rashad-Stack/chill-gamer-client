@@ -5,6 +5,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import Register from "../components/Register";
 import RootLayout from "../components/RootLayout";
 import {
+  addReview,
   forgotPassword,
   loadUser,
   login,
@@ -54,6 +55,7 @@ export default [
       {
         path: "add-review",
         element: <PrivateRoute />,
+        action: addReview,
         children: [
           {
             index: true,

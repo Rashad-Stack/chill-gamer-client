@@ -10,19 +10,18 @@ import {
   SelectValue,
   Textarea,
 } from "keep-react";
-import { useFetcher, useLocation } from "react-router";
+import { useFetcher } from "react-router";
 import Loading from "../components/Loading";
+import { auth } from "../firebase/config";
 
 export default function AddReview() {
   const fetcher = useFetcher();
-  const { state } = useLocation();
+  const user = auth.currentUser;
+
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
-        <fetcher.Form
-          className="space-y-4"
-          method="post"
-          action={`/auth/register?from=${state?.from || "/"}`}>
+        <fetcher.Form className="space-y-4" method="post" action="/add-review">
           {fetcher.state === "submitting" && <Loading />}
           <div className="mb-4">
             <h3 className="text-primary-500 text-3xl font-extrabold">
@@ -70,7 +69,7 @@ export default function AddReview() {
               </fieldset>
               <fieldset className="space-y-1">
                 <Label htmlFor="genres">Genres</Label>
-                <Select>
+                <Select name="genres" id="genres">
                   <SelectAction className="dark:bg-dark">
                     <SelectValue placeholder="Select Genres" />
                   </SelectAction>
@@ -91,6 +90,7 @@ export default function AddReview() {
                   type="email"
                   name="email"
                   id="email"
+                  defaultValue={user.email}
                   readOnly
                 />
               </fieldset>
@@ -102,6 +102,8 @@ export default function AddReview() {
                   type="name"
                   name="name"
                   id="name"
+                  defaultValue={user.displayName}
+                  readOnly
                 />
               </fieldset>
             </div>

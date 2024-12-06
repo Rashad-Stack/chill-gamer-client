@@ -15,7 +15,7 @@ import { redirect } from "react-router";
 import { auth } from "../firebase/config";
 
 // const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-// const baseUrl = "http://localhost:5000/api";
+const baseUrl = "http://localhost:5000/api";
 
 export const login = async ({ request }) => {
   const url = new URL(request.url);
@@ -168,6 +168,38 @@ export const updateMyProfile = async ({ request }) => {
     }
 
     return redirect("/my-profile");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const addReview = async ({ request }) => {
+  try {
+    const formData = await request.formData();
+    const review = Object.fromEntries(formData);
+
+    Object.keys(review).forEach((field) => {
+      if (!review[field]) {
+        throw new Error(`${field} is required field!`);
+      }
+    });
+
+    // Perform add review logic here
+    const response = await fetch(`${baseUrl}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    toast.success("Review added successfully!");
+    return redirect("/my-reviews");
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
