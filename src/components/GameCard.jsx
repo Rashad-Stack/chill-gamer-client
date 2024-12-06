@@ -7,13 +7,15 @@ import {
   CardTitle,
 } from "keep-react";
 import { CalendarCheck, GameController, Star } from "phosphor-react";
+import PropTypes from "prop-types";
 import { Link } from "react-router";
-export default function GameCard() {
+export default function GameCard({ review = {} }) {
+  const { _id, title, rating, publishingYear, thumbnail, genres } = review;
   return (
     <Card className="dark:bg-dark dark:text-white max-w-full">
       <CardHeader>
         <img
-          src="https://i.postimg.cc/X7yZ8qD4/GLP-Page-Hero-1084-1920x1080.jpg"
+          src={thumbnail}
           className="rounded-t-xl"
           alt="image"
           width={600}
@@ -21,25 +23,29 @@ export default function GameCard() {
         />
       </CardHeader>
       <CardContent className="space-y-3">
-        <CardTitle>Age of Mythology: Retold</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <div className="flex items-center justify-between">
           <CardDescription className="flex gap-1 items-center">
             <Star size={20} className="text-primary-500" />
-            <span>4.8</span> <span>(50K)</span>
+            <span>{rating}.0</span>
           </CardDescription>
           <CardDescription className="flex gap-1 items-center">
             <CalendarCheck size={20} className="text-primary-500" />
-            <span>2024</span>
+            <span>{publishingYear}</span>
           </CardDescription>
           <CardDescription className="flex gap-1 items-center">
             <GameController size={20} className="text-primary-500" />
-            <span>Actions</span>
+            <span>{genres}</span>
           </CardDescription>
         </div>
-        <Link to="/review/age-of-mythology-retold" className="block w-fit">
+        <Link to={`/review/${_id}`} className="block w-fit">
           <Button>Explore Details</Button>
         </Link>
       </CardContent>
     </Card>
   );
 }
+
+GameCard.propTypes = {
+  review: PropTypes.object.isRequired,
+};

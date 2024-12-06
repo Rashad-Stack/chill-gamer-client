@@ -7,11 +7,13 @@ import RootLayout from "../components/RootLayout";
 import {
   addReview,
   forgotPassword,
+  getAllReviews,
   loadUser,
   login,
   loginWithGoogle,
   logout,
   register,
+  reviewDetails,
 } from "../lib/loaders";
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
@@ -33,6 +35,7 @@ export default [
       {
         index: true,
         element: <Home />,
+        loader: getAllReviews,
       },
       {
         path: "reviews",
@@ -41,6 +44,7 @@ export default [
       {
         path: "review/:id",
         element: <ReviewDetails />,
+        loader: reviewDetails,
       },
       {
         path: "myWatchlist",

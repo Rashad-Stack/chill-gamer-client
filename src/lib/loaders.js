@@ -205,3 +205,33 @@ export const addReview = async ({ request }) => {
     return toast.error(error.message);
   }
 };
+
+export const reviewDetails = async ({ params }) => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews/${params.id}`);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const getAllReviews = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews`);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};

@@ -6,9 +6,23 @@ import {
   Star,
   User,
 } from "phosphor-react";
+import { useLoaderData } from "react-router";
 import SectionTitle from "../components/SectionTitle";
 
 export default function ReviewDetails() {
+  const review = useLoaderData();
+
+  const {
+    title,
+    rating,
+    publishingYear,
+    thumbnail,
+    genres,
+    name,
+    email,
+    text,
+  } = review || {};
+
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
@@ -16,7 +30,7 @@ export default function ReviewDetails() {
           <SectionTitle
             title={{
               sub: "Review Details",
-              main: "Age of Mythology: Retold",
+              main: title,
             }}
           />
           <Button>Add to WatchList</Button>
@@ -25,53 +39,34 @@ export default function ReviewDetails() {
         <div
           className={`flex items-end sm:items-center max-lg:justify-center rounded-xl border border-metal-100 h-[500px] dark:border-metal-900 dark:bg-metal-900 bg-cover bg-no-repeat bg-top`}
           style={{
-            backgroundImage: `url(https://i.postimg.cc/X7yZ8qD4/GLP-Page-Hero-1084-1920x1080.jpg)`,
+            backgroundImage: `url(${thumbnail})`,
           }}>
           <div className="bg-primary-50/10 p-4 backdrop-blur-md rounded-md grid grid-cols-2 gap-4 relative lg:left-40">
             <div className="flex items-center gap-2 text-white text-heading-6">
               <Star size={40} className="text-primary-500" />
-              <span>4.8</span> <span>(50K)</span>
+              <span>{rating}.0</span>
             </div>
             <div className="flex items-center gap-2 text-white text-heading-6">
               <CalendarCheck size={40} className="text-primary-500" />
-              <span>2024</span>
+              <span>{publishingYear}</span>
             </div>
             <div className="flex items-center gap-2 text-white text-heading-6">
               <User size={40} className="text-primary-500" />{" "}
-              <span>Rashad Stack</span>
+              <span>{name}</span>
             </div>
             <div className="flex items-center gap-2 text-white text-heading-6">
               <GameController size={40} className="text-primary-500" />
-              <span>Actions</span>
+              <span>{genres}</span>
             </div>
 
             <div className="flex items-center gap-2 text-white text-heading-6 col-span-full">
               <Envelope size={40} className="text-primary-500" />{" "}
-              <span>rashadstack@gmail.com</span>
+              <span>{email}</span>
             </div>
           </div>
         </div>
         <p className="text-body-4 text-gray-400 tracking-wide font-inter">
-          Combining the best elements of the beloved Age of Mythology with
-          modern real-time strategy design and visuals, Retold is an epic and
-          innovative experience for everyone. Combining the best elements of the
-          beloved Age of Mythology with modern real-time strategy design and
-          visuals, Retold is an epic and innovative experience for everyone.
-          Combining the best elements of the beloved Age of Mythology with
-          modern real-time strategy design and visuals, Retold is an epic and
-          innovative experience for everyone. Combining the best elements of the
-          beloved Age of Mythology with modern real-time strategy design and
-          visuals, Retold is an epic and innovative experience for everyone.
-          Combining the best elements of the beloved Age of Mythology with
-          modern real-time strategy design and visuals, Retold is an epic and
-          innovative experience for everyone. Combining the best elements of the
-          beloved Age of Mythology with modern real-time strategy design and
-          visuals, Retold is an epic and innovative experience for everyone.
-          Combining the best elements of the beloved Age of Mythology with
-          modern real-time strategy design and visuals, Retold is an epic and
-          innovative experience for everyone. Combining the best elements of the
-          beloved Age of Mythology with modern real-time strategy design and
-          visuals, Retold is an epic and innovative experience for everyone.
+          {text}
         </p>
       </div>
     </section>
