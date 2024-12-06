@@ -10,6 +10,7 @@ import {
   CarouselPrevButton,
   CarouselSlides,
 } from "keep-react";
+import { Typewriter } from "react-simple-typewriter";
 import GameRating from "./GameRating";
 
 export default function Banner() {
@@ -24,9 +25,14 @@ export default function Banner() {
                 backgroundImage: `url(${slide.image})`,
               }}>
               <div className="bg-primary-50/10 p-4 backdrop-blur-md max-w-sm rounded-md flex flex-col items-center gap-4 relative lg:left-40">
-                <Badge variant="background">Most rated</Badge>
-                <h1 className="text-heading-6 font-bold text-white">
-                  Age of Mythology: Retold
+                <Badge
+                  className="text-body-5 font-bold text-white"
+                  variant="background">
+                  Most rated
+                </Badge>
+
+                <h1 className="text-heading-6 font-bold text-white min-h-10">
+                  <Typewriter words={[slide.title]} loop />
                 </h1>
                 <p className="text-body-5 text-center text-white tracking-wide">
                   Combining the best elements of the beloved Age of Mythology
@@ -57,12 +63,12 @@ const sliderData = [
     image: "https://i.postimg.cc/cCfSvpXy/Call-of-Duty-Black-Ops-6.jpg",
   },
   {
-    title: "Slide 1",
+    title: "Age of Mythology: Retold",
     description: "Description 1",
     image: "https://i.postimg.cc/3RMfkd6N/DEATH-STRANDING.png",
   },
   {
-    title: "Slide 1",
+    title: "Age of Mythology: Retold",
     description: "Description 1",
     image: "https://i.postimg.cc/X7yZ8qD4/GLP-Page-Hero-1084-1920x1080.jpg",
   },
