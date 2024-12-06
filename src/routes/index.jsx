@@ -8,6 +8,7 @@ import {
   addReview,
   addToWatchList,
   currentUserReviews,
+  deleteReview,
   forgotPassword,
   getAllReviews,
   loadUser,
@@ -98,6 +99,11 @@ export default [
             loader: reviewDetails,
           },
         ],
+      },
+      {
+        path: "deleteReview/:id",
+        element: <PrivateRoute />,
+        loader: deleteReview,
       },
 
       {

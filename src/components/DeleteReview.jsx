@@ -9,12 +9,21 @@ import {
   ModalTitle,
 } from "keep-react";
 import { Trash } from "phosphor-react";
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { Link } from "react-router";
 
-export default function DeleteReview() {
+export default function DeleteReview({ id }) {
+  const [open, setOpen] = useState(false);
+
+  const handleModalOpen = () => setOpen(!open);
+
   return (
-    <Modal>
+    <Modal open={open} onOpenChange={handleModalOpen}>
       <ModalAction asChild>
-        <Button className="bg-red-500 hover:bg-red-500">
+        <Button
+          className="bg-red-500 hover:bg-red-500"
+          onClick={handleModalOpen}>
           <Trash size={20} />
         </Button>
       </ModalAction>
@@ -29,10 +38,17 @@ export default function DeleteReview() {
           </div>
         </ModalHeader>
         <ModalFooter>
-          <Button variant="outline">Cancel</Button>
-          <Button>Confirm</Button>
+          <Button variant="outline" onClick={handleModalOpen}>
+            Cancel
+          </Button>
+          <Link to={`/deleteReview/${id}`}>
+            <Button onClick={handleModalOpen}>Delete</Button>
+          </Link>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
 }
+DeleteReview.propTypes = {
+  id: PropTypes.string.isRequired,
+};

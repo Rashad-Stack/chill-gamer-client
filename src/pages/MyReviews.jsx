@@ -44,10 +44,9 @@ export default function MyReviews() {
               </TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
-            {reviews &&
-              reviews.length &&
-              reviews.map((review) => (
+          {reviews && reviews.length && (
+            <TableBody>
+              {reviews.map((review) => (
                 <TableRow key={review._id}>
                   <TableCell>
                     <div className="max-w-[250px] truncate">{review.title}</div>
@@ -62,12 +61,13 @@ export default function MyReviews() {
                           <Pencil size={20} />
                         </Button>
                       </Link>
-                      <DeleteReview />
+                      <DeleteReview id={review._id} />
                     </div>
                   </TableCell>
                 </TableRow>
               ))}
-          </TableBody>
+            </TableBody>
+          )}
         </Table>
       </div>
     </section>

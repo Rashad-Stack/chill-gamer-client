@@ -195,7 +195,7 @@ export const addReview = async ({ request }) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.message);
     }
 
     toast.success("Review added successfully!");
@@ -211,7 +211,7 @@ export const reviewDetails = async ({ params }) => {
     const response = await fetch(`${baseUrl}/reviews/${params.id}`);
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.message);
     }
 
     return response.json();
@@ -226,7 +226,7 @@ export const getAllReviews = async () => {
     const response = await fetch(`${baseUrl}/reviews`);
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.message);
     }
 
     return response.json();
@@ -254,7 +254,7 @@ export const addToWatchList = async ({ request }) => {
     });
 
     if (!watchlistRes.ok) {
-      throw new Error(watchlistRes.statusText);
+      throw new Error(watchlistRes.message);
     }
 
     return toast.success("Added to watchlist successfully!");
@@ -277,7 +277,7 @@ export const currentUserReviews = async () => {
     );
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.message);
     }
 
     return response.json();
@@ -307,10 +307,28 @@ export const updateReview = async ({ request, params }) => {
     });
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.message);
     }
 
     toast.success("Review updated successfully!");
+    return redirect("/my-reviews");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const deleteReview = async ({ params }) => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews/${params.id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(response.message);
+    }
+
+    toast.success("Review deleted successfully!");
     return redirect("/my-reviews");
   } catch (error) {
     console.error(error);
