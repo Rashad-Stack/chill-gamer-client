@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from "react-router";
+import { auth } from "../firebase/config";
 
 export default function PrivateRoute() {
   const { pathname } = useLocation();
-  const user = true; // auth.currentUser;
+  const user = auth.currentUser;
 
   return user ? (
     <Outlet />

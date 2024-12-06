@@ -14,6 +14,9 @@ import { toast } from "keep-react";
 import { redirect } from "react-router";
 import { auth } from "../firebase/config";
 
+// const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+// const baseUrl = "http://localhost:5000/api";
+
 export const login = async ({ request }) => {
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get("from") || "/";
@@ -36,7 +39,7 @@ export const login = async ({ request }) => {
 
     // Redirect to the previous route or a default route
     toast.success("Logged in successfully!");
-    return redirect(`${searchTerm}?modal=open`);
+    return redirect(`${searchTerm}`);
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
@@ -73,6 +76,7 @@ export const register = async ({ request }) => {
     // Set the user's display name
     await updateProfile(result.user, {
       displayName: credentials.name,
+      photoURL: credentials.photo,
     });
 
     // Redirect to the previous route or a default route
@@ -119,7 +123,8 @@ export const loginWithGoogle = async ({ request }) => {
     await signInWithPopup(auth, provider);
     await setPersistence(auth, browserLocalPersistence);
 
-    return redirect(`${searchTerm}?modal=open`);
+    toast.success("Logged in successfully!");
+    return redirect(`${searchTerm}`);
   } catch (error) {
     console.error(error);
     toast.error(error.message);

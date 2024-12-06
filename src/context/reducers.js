@@ -1,4 +1,4 @@
-import { SET_THEME, SET_USER } from "./actions";
+import { LOGOUT, SET_THEME, SET_USER } from "./actions";
 
 // Reducer
 const reducers = (state, action) => {
@@ -13,6 +13,12 @@ const reducers = (state, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
       };
 
     default:

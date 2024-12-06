@@ -7,13 +7,14 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
-import { NavLink } from "react-router";
-import useGlobalState from "../hooks/useGlobalState";
+import { NavLink, useLocation } from "react-router";
+import { auth } from "../firebase/config";
 import ProfileInfo from "./ProfileInfo";
 import ThemeSwitcher from "./ThemeSwitcher ";
 
 export default function Header() {
-  const { user } = useGlobalState();
+  const { state } = useLocation();
+  const user = auth?.currentUser;
 
   return (
     <header className="dark:bg-dark">
@@ -50,7 +51,7 @@ export default function Header() {
 
               {user ? (
                 <NavLink
-                  to="/auth/logout"
+                  to={`/auth/logout?from=${state?.from || "/"}`}
                   className={({ isActive }) =>
                     `${
                       isActive
@@ -94,7 +95,7 @@ export default function Header() {
               )}
             </NavbarList>
             <div className="flex items-center gap-2">
-              <ProfileInfo />
+              {user && <ProfileInfo />}
               <ThemeSwitcher />
               <NavbarCollapseBtn />
             </div>
