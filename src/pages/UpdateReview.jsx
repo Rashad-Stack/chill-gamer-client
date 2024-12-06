@@ -10,26 +10,40 @@ import {
   SelectValue,
   Textarea,
 } from "keep-react";
-import { useFetcher, useLocation } from "react-router";
+import { useFetcher, useLoaderData } from "react-router";
 import Loading from "../components/Loading";
 
 export default function UpdateReview() {
+  const review = useLoaderData();
   const fetcher = useFetcher();
-  const { state } = useLocation();
+
+  const {
+    _id,
+    title,
+    rating,
+    publishingYear,
+    thumbnail,
+    genres,
+    name,
+    email,
+    text,
+  } = review || {};
+
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
         <fetcher.Form
           className="space-y-4"
-          method="post"
-          action={`/auth/register?from=${state?.from || "/"}`}>
+          method="patch"
+          action={`/updateReview/${_id}`}>
           {fetcher.state === "submitting" && <Loading />}
           <div className="mb-4">
             <h3 className="text-primary-500 text-3xl font-extrabold">
               Update Review
             </h3>
             <p className="text-gray-500 dark:text-gray-300 text-sm mt-4 leading-relaxed">
-              Add a valuable review to help gamers make informed decisions.
+              Update your valuable review to help gamers make informed
+              decisions.
             </p>
           </div>
 
@@ -43,6 +57,7 @@ export default function UpdateReview() {
                   type="text"
                   name="title"
                   id="title"
+                  defaultValue={title}
                 />
               </fieldset>
 
@@ -54,6 +69,7 @@ export default function UpdateReview() {
                   type="number"
                   className="dark:bg-dark dark:text-white"
                   name="rating"
+                  defaultValue={rating}
                 />
               </fieldset>
               <fieldset className="space-y-1">
@@ -66,11 +82,12 @@ export default function UpdateReview() {
                   max="2100"
                   className="dark:bg-dark dark:text-white"
                   name="publishingYear"
+                  defaultValue={publishingYear}
                 />
               </fieldset>
               <fieldset className="space-y-1">
                 <Label htmlFor="genres">Genres</Label>
-                <Select>
+                <Select name="genres" id="genres" defaultValue={genres}>
                   <SelectAction className="dark:bg-dark">
                     <SelectValue placeholder="Select Genres" />
                   </SelectAction>
@@ -92,6 +109,7 @@ export default function UpdateReview() {
                   name="email"
                   id="email"
                   readOnly
+                  defaultValue={email}
                 />
               </fieldset>
               <fieldset className="space-y-1">
@@ -102,6 +120,8 @@ export default function UpdateReview() {
                   type="name"
                   name="name"
                   id="name"
+                  readOnly
+                  defaultValue={name}
                 />
               </fieldset>
             </div>
@@ -113,6 +133,7 @@ export default function UpdateReview() {
                 type="text"
                 name="thumbnail"
                 id="thumbnail"
+                defaultValue={thumbnail}
               />
             </fieldset>
             <fieldset className="space-y-1">
@@ -124,6 +145,7 @@ export default function UpdateReview() {
                 name="text"
                 id="text"
                 rows={8}
+                defaultValue={text}
               />
             </fieldset>
           </div>

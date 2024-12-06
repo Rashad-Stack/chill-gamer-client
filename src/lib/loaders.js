@@ -263,3 +263,57 @@ export const addToWatchList = async ({ request }) => {
     return toast.error(error.message);
   }
 };
+
+export const currentUserReviews = async () => {
+  try {
+    const user = await loadUser();
+
+    if (!user) {
+      return [];
+    }
+
+    const response = await fetch(
+      `${baseUrl}/reviews/currentUserReviews/${user.email}`
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const updateReview = async ({ request, params }) => {
+  try {
+    const formData = await request.formData();
+    const review = Object.fromEntries(formData);
+
+    Object.keys(review).forEach((field) => {
+      if (!review[field]) {
+        throw new Error(`${field} is required field!`);
+      }
+    });
+
+    const response = await fetch(`${baseUrl}/reviews/${params.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    toast.success("Review updated successfully!");
+    return redirect("/my-reviews");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};

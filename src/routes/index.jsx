@@ -7,6 +7,7 @@ import RootLayout from "../components/RootLayout";
 import {
   addReview,
   addToWatchList,
+  currentUserReviews,
   forgotPassword,
   getAllReviews,
   loadUser,
@@ -15,6 +16,7 @@ import {
   logout,
   register,
   reviewDetails,
+  updateReview,
 } from "../lib/loaders";
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
@@ -41,6 +43,7 @@ export default [
       {
         path: "reviews",
         element: <AllReviews />,
+        loader: getAllReviews,
       },
       {
         path: "review/:id",
@@ -80,16 +83,19 @@ export default [
           {
             index: true,
             element: <MyReviews />,
+            loader: currentUserReviews,
           },
         ],
       },
       {
         path: "updateReview/:id",
         element: <PrivateRoute />,
+        action: updateReview,
         children: [
           {
             index: true,
             element: <UpdateReview />,
+            loader: reviewDetails,
           },
         ],
       },

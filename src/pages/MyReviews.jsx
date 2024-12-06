@@ -8,11 +8,13 @@ import {
   TableRow,
 } from "keep-react";
 import { Pencil } from "phosphor-react";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import DeleteReview from "../components/DeleteReview";
 import SectionTitle from "../components/SectionTitle";
 
 export default function MyReviews() {
+  const reviews = useLoaderData();
+
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
@@ -38,31 +40,33 @@ export default function MyReviews() {
                 <div className="w-[90px]">Year</div>
               </TableHead>
               <TableHead>
-                <div className="w-[80px]">Status</div>
+                <div className="w-[80px]">Actions</div>
               </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <div className="max-w-[250px] truncate">
-                  Age of Mythology: Retold
-                </div>
-              </TableCell>
-              <TableCell>Action</TableCell>
-              <TableCell>4.8</TableCell>
-              <TableCell>2024</TableCell>
-              <TableCell>
-                <div className="space-x-4">
-                  <Link to="/updateReview/:id">
-                    <Button>
-                      <Pencil size={20} />
-                    </Button>
-                  </Link>
-                  <DeleteReview />
-                </div>
-              </TableCell>
-            </TableRow>
+            {reviews &&
+              reviews.length &&
+              reviews.map((review) => (
+                <TableRow key={review._id}>
+                  <TableCell>
+                    <div className="max-w-[250px] truncate">{review.title}</div>
+                  </TableCell>
+                  <TableCell>{review.genres}</TableCell>
+                  <TableCell>{review.rating}.0</TableCell>
+                  <TableCell>{review.publishingYear}</TableCell>
+                  <TableCell>
+                    <div className="space-x-4">
+                      <Link to={`/updateReview/${review._id}`}>
+                        <Button>
+                          <Pencil size={20} />
+                        </Button>
+                      </Link>
+                      <DeleteReview />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </div>
