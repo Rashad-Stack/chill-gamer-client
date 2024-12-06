@@ -8,23 +8,26 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "keep-react";
+import { auth } from "../firebase/config";
 
 export default function ProfileInfo() {
+  const user = auth?.currentUser;
+
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipAction asChild>
           <Avatar className="w-8 h-8">
-            <AvatarImage src="/images/avatar/avatar-4.png" />
+            <AvatarImage src={user?.photoURL} />
             <AvatarFallback className="border border-primary-500 dark:text-white">
-              KR
+              {user?.displayName?.charAt(0) || "U"}
             </AvatarFallback>
           </Avatar>
         </TooltipAction>
         <TooltipContent>
           <TooltipArrow />
           <p className="text-body-5 font-medium text-white">
-            Tooltip - Title here
+            {user?.displayName}
           </p>
         </TooltipContent>
       </Tooltip>

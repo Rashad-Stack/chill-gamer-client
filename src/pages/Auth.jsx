@@ -1,6 +1,5 @@
 import { Divider } from "keep-react";
 import { Outlet, useLocation } from "react-router";
-import LoginWithGithub from "../components/LoginWithGithub";
 import LoginWithGoogle from "../components/LoginWithGoogle";
 
 export default function Auth() {
@@ -20,7 +19,6 @@ export default function Auth() {
             <div className="space-y-3">
               <Divider className="my-3">Or</Divider>
               <LoginWithGoogle />
-              <LoginWithGithub />
             </div>
           )}
         </div>

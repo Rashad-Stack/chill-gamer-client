@@ -1,8 +1,17 @@
+import ForgotPassword from "../components/ForgotPassword";
 import HydrateFallback from "../components/HydrateFallback";
 import Login from "../components/Login";
 import PrivateRoute from "../components/PrivateRoute";
 import Register from "../components/Register";
 import RootLayout from "../components/RootLayout";
+import {
+  forgotPassword,
+  loadUser,
+  login,
+  loginWithGoogle,
+  logout,
+  register,
+} from "../lib/loaders";
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
 import Auth from "../pages/Auth";
@@ -18,6 +27,7 @@ export default [
     element: <RootLayout />,
     errorElement: <div>Error...</div>,
     hydrateFallbackElement: <HydrateFallback />,
+    loader: loadUser,
     children: [
       {
         index: true,
@@ -71,6 +81,7 @@ export default [
           },
         ],
       },
+
       {
         path: "auth/",
         element: <Auth />,
@@ -78,14 +89,32 @@ export default [
           {
             index: true,
             element: <Login />,
+            action: login,
           },
           {
             path: "login",
             element: <Login />,
+            action: login,
           },
           {
             path: "register",
             element: <Register />,
+            action: register,
+          },
+          {
+            path: "forgot-password",
+            element: <ForgotPassword />,
+            action: forgotPassword,
+          },
+
+          {
+            path: "login-with-google",
+            loader: loginWithGoogle,
+          },
+
+          {
+            path: "logout",
+            loader: logout,
           },
         ],
       },

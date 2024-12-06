@@ -75,7 +75,7 @@ export default function Register() {
             <Input
               id="password"
               placeholder="Enter password"
-              type="password"
+              type="text"
               className="ps-11 dark:bg-dark dark:text-white"
               name="password"
             />
