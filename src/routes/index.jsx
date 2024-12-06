@@ -6,6 +6,7 @@ import Register from "../components/Register";
 import RootLayout from "../components/RootLayout";
 import {
   addReview,
+  addToWatchList,
   forgotPassword,
   getAllReviews,
   loadUser,
@@ -45,6 +46,7 @@ export default [
         path: "review/:id",
         element: <ReviewDetails />,
         loader: reviewDetails,
+        action: addToWatchList,
       },
       {
         path: "myWatchlist",
@@ -54,6 +56,10 @@ export default [
             index: true,
             element: <GameWatchlist />,
           },
+          // {
+          //   path: "addToWatchlist",
+          //   action: addToWatchList,
+          // },
         ],
       },
       {

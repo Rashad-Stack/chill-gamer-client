@@ -6,13 +6,15 @@ import {
   Star,
   User,
 } from "phosphor-react";
-import { useLoaderData } from "react-router";
+import { useFetcher, useLoaderData } from "react-router";
 import SectionTitle from "../components/SectionTitle";
 
 export default function ReviewDetails() {
   const review = useLoaderData();
+  const fetcher = useFetcher();
 
   const {
+    _id,
     title,
     rating,
     publishingYear,
@@ -33,7 +35,18 @@ export default function ReviewDetails() {
               main: title,
             }}
           />
-          <Button>Add to WatchList</Button>
+
+          <Button
+            onClick={() =>
+              fetcher.submit(review, {
+                method: "post",
+                action: `/review/${_id}`,
+              })
+            }
+            disabled={fetcher.state === "submitting"}
+            className="disabled:opacity-50">
+            Add to WatchList
+          </Button>
         </div>
 
         <div

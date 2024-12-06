@@ -235,3 +235,31 @@ export const getAllReviews = async () => {
     return toast.error(error.message);
   }
 };
+
+export const addToWatchList = async ({ request }) => {
+  try {
+    // Perform add to watchlist logic here
+    const formData = await request.formData();
+
+    const review = Object.fromEntries(formData);
+    // eslint-disable-next-line no-unused-vars
+    const { _id, ...watchlistItem } = review;
+
+    const watchlistRes = await fetch(`${baseUrl}/watchlists`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(watchlistItem),
+    });
+
+    if (!watchlistRes.ok) {
+      throw new Error(watchlistRes.statusText);
+    }
+
+    return toast.success("Added to watchlist successfully!");
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
