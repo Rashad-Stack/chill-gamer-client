@@ -16,14 +16,12 @@ export default function GameCard({ review = {} }) {
       <CardHeader>
         <img
           src={thumbnail}
-          className="rounded-t-xl"
-          alt="image"
-          width={600}
-          height={300}
+          className="rounded-t-xl max-h-44 object-cover w-full"
+          alt={title}
         />
       </CardHeader>
       <CardContent className="space-y-3">
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="line-clamp-2">{title}</CardTitle>
         <div className="flex items-center justify-between">
           <CardDescription className="flex gap-1 items-center">
             <Star size={20} className="text-primary-500" />

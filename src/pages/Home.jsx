@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import BlogCard from "../components/BlogCard";
 import GameCard from "../components/GameCard";
 import SectionTitle from "../components/SectionTitle";
+import blogs from "../data/blogs";
 
 export default function Home() {
   const reviews = useLoaderData();
@@ -46,10 +47,9 @@ export default function Home() {
           />
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
+              {blogs.map((blog) => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
             </div>
           </div>
         </div>

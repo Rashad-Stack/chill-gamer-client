@@ -70,6 +70,8 @@ export default function UpdateReview() {
                   className="dark:bg-dark dark:text-white"
                   name="rating"
                   defaultValue={rating}
+                  min={1}
+                  max={5}
                 />
               </fieldset>
               <fieldset className="space-y-1">
@@ -79,7 +81,7 @@ export default function UpdateReview() {
                   placeholder="Ex: 2021, 2024"
                   type="number"
                   min="1900"
-                  max="2100"
+                  max="4000"
                   className="dark:bg-dark dark:text-white"
                   name="publishingYear"
                   defaultValue={publishingYear}
@@ -93,9 +95,15 @@ export default function UpdateReview() {
                   </SelectAction>
                   <SelectContent className="dark:bg-dark">
                     <SelectGroup>
-                      <SelectItem value="action">Action</SelectItem>
-                      <SelectItem value="rpg">RPG</SelectItem>
-                      <SelectItem value="adventure">Adventure</SelectItem>
+                      <SelectItem value="Action" className="cursor-pointer">
+                        Action
+                      </SelectItem>
+                      <SelectItem value="RPG" className="cursor-pointer">
+                        RPG
+                      </SelectItem>
+                      <SelectItem value="Adventure" className="cursor-pointer">
+                        Adventure
+                      </SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
