@@ -14,16 +14,16 @@ Chill Gamer is a user-friendly game review application designed to provide a pla
 
 ## Live Site
 
-[Chill Gamer Live](https://chill-gamer-rashad-stack.netlify.app)
-[Chill Gamer Server](b10-a10-server-side-rashad-stack.vercel.app/api)
-[Chill Gamer Api Documentation](https://github.com/programming-hero-web-course2/b10-a10-server-side-Rashad-Stack/blob/main/README.md)
+- [Chill Gamer Live](https://chill-gamer-rashad-stack.netlify.app)
+- [Chill Gamer Server](b10-a10-server-side-rashad-stack.vercel.app/api)
+- [Chill Gamer Api Documentation](https://github.com/programming-hero-web-course2/b10-a10-server-side-Rashad-Stack/blob/main/README.md)
 
 ## Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/chill-gamer.git
+git clone https://github.com/programming-hero-web-course2/b10-a10-client-side-Rashad-Stack.git
 ```
 
 2. Navigate to the project directory:
