@@ -366,5 +366,49 @@ export const getWatchlist = async () => {
   }
 };
 
+export const sliderData = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews?limit=3&sort=rating`);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
+export const highestRated = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews?limit=4&sort=rating`);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+export const recentlyAdded = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/reviews?limit=4&sort=year`);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return toast.error(error.message);
+  }
+};
+
 export const detailBlog = async ({ params }) =>
   blogs.find((blog) => blog.id === Number(params.id));

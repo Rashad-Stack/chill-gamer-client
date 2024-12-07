@@ -13,12 +13,15 @@ import {
   forgotPassword,
   getAllReviews,
   getWatchlist,
+  highestRated,
   loadUser,
   login,
   loginWithGoogle,
   logout,
+  recentlyAdded,
   register,
   reviewDetails,
+  sliderData,
   updateReview,
 } from "../lib/loaders";
 import AddReview from "../pages/AddReview";
@@ -43,7 +46,7 @@ export default [
       {
         index: true,
         element: <Home />,
-        loader: getAllReviews,
+        loader: highestRated,
       },
       {
         path: "reviews",
@@ -60,6 +63,14 @@ export default [
         path: "blogs/:id",
         element: <DetailBlog />,
         loader: detailBlog,
+      },
+      {
+        path: "slider",
+        loader: sliderData,
+      },
+      {
+        path: "recent",
+        loader: recentlyAdded,
       },
       {
         path: "myWatchlist",
