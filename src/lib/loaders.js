@@ -15,8 +15,8 @@ import { redirect } from "react-router";
 import blogs from "../data/blogs";
 import { auth } from "../firebase/config";
 
-// const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-const baseUrl = "http://localhost:5000/api";
+const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+// const baseUrl = "http://localhost:5000/api";
 
 export const login = async ({ request }) => {
   const url = new URL(request.url);
@@ -198,9 +198,16 @@ export const addReview = async ({ request }) => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-
     toast.success("Review added successfully!");
-    return redirect("/my-reviews");
+
+    // Clear input fields
+    const form = request;
+    console.log(form);
+    if (form && form.reset) {
+      form.reset();
+    }
+
+    return redirect("/add-review");
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
@@ -383,7 +390,7 @@ export const sliderData = async () => {
 
 export const highestRated = async () => {
   try {
-    const response = await fetch(`${baseUrl}/reviews?limit=4&sort=rating`);
+    const response = await fetch(`${baseUrl}/reviews?limit=8&sort=rating`);
 
     if (!response.ok) {
       throw new Error(response.statusText);

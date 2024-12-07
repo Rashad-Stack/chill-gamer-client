@@ -6,12 +6,19 @@ import {
   Star,
   User,
 } from "phosphor-react";
+import { useEffect } from "react";
 import { useFetcher, useLoaderData } from "react-router";
 import SectionTitle from "../components/SectionTitle";
 
 export default function ReviewDetails() {
   const review = useLoaderData();
   const fetcher = useFetcher();
+
+  useEffect(() => {
+    if (fetcher.state === "idle" && !fetcher.data) {
+      fetcher.load("/");
+    }
+  }, [fetcher]);
 
   const {
     _id,
@@ -36,17 +43,19 @@ export default function ReviewDetails() {
             }}
           />
 
-          <Button
-            onClick={() =>
-              fetcher.submit(review, {
-                method: "post",
-                action: `/review/${_id}`,
-              })
-            }
-            disabled={fetcher.state === "submitting"}
-            className="disabled:opacity-50">
-            Add to WatchList
-          </Button>
+          {fetcher.data && (
+            <Button
+              onClick={() =>
+                fetcher.submit(review, {
+                  method: "post",
+                  action: `/review/${_id}`,
+                })
+              }
+              disabled={fetcher.state === "submitting"}
+              className="disabled:opacity-50">
+              Add to WatchList
+            </Button>
+          )}
         </div>
 
         <div

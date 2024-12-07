@@ -10,13 +10,12 @@ import {
   SelectValue,
   Textarea,
 } from "keep-react";
-import { useFetcher } from "react-router";
+import { useFetcher, useLoaderData } from "react-router";
 import Loading from "../components/Loading";
-import { auth } from "../firebase/config";
 
 export default function AddReview() {
+  const user = useLoaderData();
   const fetcher = useFetcher();
-  const user = auth.currentUser;
 
   return (
     <section>

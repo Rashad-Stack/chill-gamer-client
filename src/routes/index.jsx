@@ -39,8 +39,8 @@ export default [
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <Error />,
     hydrateFallbackElement: <HydrateFallback />,
+    errorElement: <Error />,
     loader: loadUser,
     children: [
       {
@@ -84,6 +84,7 @@ export default [
           {
             index: true,
             element: <AddReview />,
+            loader: loadUser,
           },
         ],
       },
@@ -143,13 +144,11 @@ export default [
 
           {
             path: "login-with-google",
-            element: <Error />,
             loader: loginWithGoogle,
           },
 
           {
             path: "logout",
-            element: <Error />,
             loader: logout,
           },
         ],
@@ -159,12 +158,12 @@ export default [
 
   {
     path: "/slider",
-    element: <Error />,
+    // element: <Error />,
     loader: sliderData,
   },
   {
     path: "/recent",
-    element: <Error />,
+    // element: <Error />,
     loader: recentlyAdded,
   },
 ];

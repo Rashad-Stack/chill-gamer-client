@@ -17,7 +17,7 @@ export default function RecentlyAdded() {
         <SectionTitle
           title={{
             sub: "Discover the best games",
-            main: "Recently Added Games",
+            main: "Recently Released Games",
           }}
         />
         <div>
