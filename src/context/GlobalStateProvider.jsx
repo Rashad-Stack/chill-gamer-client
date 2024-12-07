@@ -6,8 +6,6 @@ import reducers from "./reducers";
 // Initial state
 const initialState = {
   theme: localStorage.getItem("vite-ui-theme") || null,
-  user: null,
-  isLoading: true,
 };
 // Create context
 const GlobalStateContext = createContext({
