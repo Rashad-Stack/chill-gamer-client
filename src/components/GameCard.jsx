@@ -24,7 +24,7 @@ export default function GameCard({ review = {} }) {
           />
         </CardHeader>
         <CardContent className="space-y-3">
-          <CardTitle className="line-clamp-2">{title}</CardTitle>
+          <CardTitle className="line-clamp-1">{title}</CardTitle>
           <div className="flex items-center justify-between">
             <CardDescription className="flex gap-1 items-center">
               <Star size={20} className="text-primary-500" />
