@@ -64,14 +64,7 @@ export default [
         element: <DetailBlog />,
         loader: detailBlog,
       },
-      {
-        path: "slider",
-        loader: sliderData,
-      },
-      {
-        path: "recent",
-        loader: recentlyAdded,
-      },
+
       {
         path: "myWatchlist",
         element: <PrivateRoute />,
@@ -150,15 +143,28 @@ export default [
 
           {
             path: "login-with-google",
+            element: <Error />,
             loader: loginWithGoogle,
           },
 
           {
             path: "logout",
+            element: <Error />,
             loader: logout,
           },
         ],
       },
     ],
+  },
+
+  {
+    path: "/slider",
+    element: <Error />,
+    loader: sliderData,
+  },
+  {
+    path: "/recent",
+    element: <Error />,
+    loader: recentlyAdded,
   },
 ];

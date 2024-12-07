@@ -12,6 +12,7 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router";
 export default function GameCard({ review = {} }) {
   const { _id, title, rating, publishingYear, thumbnail, genres } = review;
+
   return (
     <Fade>
       <Card className="dark:bg-dark dark:text-white max-w-full">

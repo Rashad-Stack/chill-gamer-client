@@ -10,7 +10,7 @@ export default function AllReviews() {
   return (
     <section>
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-2">
           <SectionTitle
             title={{
               sub: "Discover the best games",
