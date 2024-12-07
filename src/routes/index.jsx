@@ -158,12 +158,12 @@ export default [
 
   {
     path: "/slider",
-    // element: <Error />,
+    element: <Error />,
     loader: sliderData,
   },
   {
     path: "/recent",
-    // element: <Error />,
+    element: <Error />,
     loader: recentlyAdded,
   },
 ];

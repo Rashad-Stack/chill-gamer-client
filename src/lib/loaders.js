@@ -152,29 +152,6 @@ export const forgotPassword = async ({ request }) => {
   }
 };
 
-export const updateMyProfile = async ({ request }) => {
-  try {
-    const formData = await request.formData();
-    const name = formData.get("name");
-    const photo = formData.get("photo");
-
-    const user = auth.currentUser;
-
-    const profileUpdates = {};
-    if (name.trim() !== "") profileUpdates.displayName = name;
-    if (photo) profileUpdates.photoURL = photo;
-
-    if (Object.keys(profileUpdates).length > 0) {
-      await updateProfile(user, profileUpdates);
-    }
-
-    return redirect("/my-profile");
-  } catch (error) {
-    console.error(error);
-    return toast.error(error.message);
-  }
-};
-
 export const addReview = async ({ request }) => {
   try {
     const formData = await request.formData();

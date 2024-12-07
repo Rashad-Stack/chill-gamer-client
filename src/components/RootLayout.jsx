@@ -1,8 +1,11 @@
+import { ToastWrapper } from "keep-react";
 import { Outlet } from "react-router";
+import useGlobalState from "../hooks/useGlobalState";
 import Footer from "./Footer";
 import Header from "./Header";
 
 export default function RootLayout() {
+  const { theme } = useGlobalState();
   return (
     <div className="flex flex-col min-h-dvh">
       <Header />
@@ -10,6 +13,8 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <Footer />
+
+      <ToastWrapper richColors={true} theme={theme} />
     </div>
   );
 }
