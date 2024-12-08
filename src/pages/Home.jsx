@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { useLoaderData } from "react-router";
 import Banner from "../components/Banner";
 import BlogCard from "../components/BlogCard";
@@ -27,7 +28,13 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {reviews && reviews.length ? (
                 reviews.map((review) => (
-                  <GameCard key={review?._id} review={review} />
+                  <Fade
+                    key={review?._id}
+                    fraction={0}
+                    cascade={true}
+                    damping={0.1}>
+                    <GameCard review={review} />
+                  </Fade>
                 ))
               ) : (
                 <div className="text-center text-gray-500 dark:text-gray-300">
