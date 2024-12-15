@@ -313,7 +313,10 @@ export const addToWatchList = async ({ request }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(watchlistItem),
+      body: JSON.stringify({
+        ...watchlistItem,
+        watchlist: auth.currentUser.email,
+      }),
     });
 
     if (!watchlistRes.ok) {
