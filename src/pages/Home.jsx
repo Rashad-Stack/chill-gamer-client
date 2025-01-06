@@ -20,8 +20,8 @@ export default function Home() {
         <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
           <SectionTitle
             title={{
-              sub: "Discover the best games",
-              main: "Highest Rated Game Section",
+              sub: "Discover the best movies",
+              main: "Featured Movies",
             }}
           />
           <div>
@@ -38,7 +38,7 @@ export default function Home() {
                 ))
               ) : (
                 <div className="text-center text-gray-500 dark:text-gray-300">
-                  No reviews found!
+                  No movie found!
                 </div>
               )}
             </div>

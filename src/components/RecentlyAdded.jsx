@@ -16,8 +16,8 @@ export default function RecentlyAdded() {
       <div className="container lg:max-w-7xl mx-auto max-xl:px-4 my-8 space-y-4">
         <SectionTitle
           title={{
-            sub: "Discover the best games",
-            main: "Recently Released Games",
+            sub: "Discover the best movies",
+            main: "Recently Released movies",
           }}
         />
         <div>

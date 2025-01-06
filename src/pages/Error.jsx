@@ -9,7 +9,7 @@ export default function Error() {
           <h2 className="mb-8 font-extrabold text-9xl text-gray-600">
             <span className="sr-only">Error</span>404
           </h2>
-          <p className="text-2xl font-semibold md:text-3xl">
+          <p className="text-2xl font-semibold md:text-3xl dark:text-white">
             Sorry, we couldn&apos;t find this page.
           </p>
           <p className="mt-4 mb-8 text-gray-400">

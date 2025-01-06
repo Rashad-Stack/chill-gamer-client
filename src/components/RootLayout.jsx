@@ -1,5 +1,5 @@
 import { ToastWrapper } from "keep-react";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 import useGlobalState from "../hooks/useGlobalState";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -11,6 +11,7 @@ export default function RootLayout() {
       <Header />
       <main className="flex-1 ">
         <Outlet />
+        <ScrollRestoration />
       </main>
       <Footer />
 

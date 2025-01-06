@@ -49,12 +49,12 @@ export default [
         loader: highestRated,
       },
       {
-        path: "reviews",
+        path: "movies",
         element: <AllReviews />,
         loader: getAllReviews,
       },
       {
-        path: "review/:id",
+        path: "movies/:id",
         element: <ReviewDetails />,
         loader: reviewDetails,
         action: addToWatchList,
@@ -66,7 +66,7 @@ export default [
       },
 
       {
-        path: "myWatchlist",
+        path: "watchlist",
         element: <PrivateRoute />,
         children: [
           {
@@ -77,7 +77,7 @@ export default [
         ],
       },
       {
-        path: "add-review",
+        path: "add-movie",
         element: <PrivateRoute />,
         action: addReview,
         children: [
@@ -89,7 +89,7 @@ export default [
         ],
       },
       {
-        path: "my-reviews",
+        path: "favorites",
         element: <PrivateRoute />,
         children: [
           {
@@ -100,7 +100,7 @@ export default [
         ],
       },
       {
-        path: "updateReview/:id",
+        path: "update-movie/:id",
         element: <PrivateRoute />,
         action: updateReview,
         children: [
@@ -112,7 +112,7 @@ export default [
         ],
       },
       {
-        path: "deleteReview/:id",
+        path: "delete-movie/:id",
         element: <PrivateRoute />,
         loader: deleteReview,
       },

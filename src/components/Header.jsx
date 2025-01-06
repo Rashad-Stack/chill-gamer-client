@@ -110,9 +110,8 @@ export default function Header() {
               </NavbarItem>
             </NavLink>
           ))}
-          {user && (
+          {!user && (
             <>
-              {" "}
               <NavLink
                 to="/auth/login"
                 className={({ isActive }) =>
@@ -163,8 +162,8 @@ export default function Header() {
 }
 const navItems = [
   { title: "Home", to: "/" },
-  { title: "All Reviews", to: "/reviews" },
-  { title: "Add Review", to: "/add-review" },
-  { title: "My Reviews", to: "/my-reviews" },
-  { title: "Game Watchlist", to: "/myWatchlist" },
+  { title: "All Movies", to: "/movies" },
+  { title: "Add Movie", to: "/add-movie" },
+  { title: "My Favorites", to: "/my-favorites" },
+  { title: "Watchlist", to: "/watchlist" },
 ];

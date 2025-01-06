@@ -14,7 +14,7 @@ export default function AllReviews() {
           <SectionTitle
             title={{
               sub: "Discover the best games",
-              main: "All Reviews",
+              main: "All Games",
             }}
           />
           <div className="flex gap-4 items-center">

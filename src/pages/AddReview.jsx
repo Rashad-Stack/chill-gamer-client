@@ -24,7 +24,7 @@ export default function AddReview() {
           {fetcher.state === "submitting" && <Loading />}
           <div className="mb-4">
             <h3 className="text-primary-500 text-3xl font-extrabold">
-              Add Review
+              Add Movie
             </h3>
             <p className="text-gray-500 dark:text-gray-300 text-sm mt-4 leading-relaxed">
               Add a valuable review to help gamers make informed decisions.
@@ -34,7 +34,7 @@ export default function AddReview() {
           <div className="space-y-4 dark:text-white">
             <div className="grid grid-cols-2 gap-4">
               <fieldset className="space-y-1">
-                <Label htmlFor="title">Game Title</Label>
+                <Label htmlFor="title">Movie Title</Label>
                 <Input
                   placeholder="Enter Game Title"
                   className="dark:bg-dark dark:text-white"
@@ -76,14 +76,14 @@ export default function AddReview() {
                   </SelectAction>
                   <SelectContent className="dark:bg-dark">
                     <SelectGroup>
-                      <SelectItem value="Action" className="cursor-pointer">
-                        Action
+                      <SelectItem value="Comedy" className="cursor-pointer">
+                        Comedy
                       </SelectItem>
-                      <SelectItem value="RPG" className="cursor-pointer">
-                        RPG
+                      <SelectItem value="Drama" className="cursor-pointer">
+                        Drama
                       </SelectItem>
-                      <SelectItem value="Adventure" className="cursor-pointer">
-                        Adventure
+                      <SelectItem value="Horrors" className="cursor-pointer">
+                        Horrors
                       </SelectItem>
                     </SelectGroup>
                   </SelectContent>
@@ -115,7 +115,7 @@ export default function AddReview() {
               </fieldset>
             </div>
             <fieldset className="space-y-1">
-              <Label htmlFor="thumbnail">Game Cover Image</Label>
+              <Label htmlFor="thumbnail">Movie Poster</Label>
               <Input
                 placeholder="a URL for the game cover"
                 className="dark:bg-dark dark:text-white"

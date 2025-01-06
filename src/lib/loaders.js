@@ -14,8 +14,9 @@ import { toast } from "keep-react";
 import { redirect } from "react-router";
 import blogs from "../data/blogs";
 import { auth } from "../firebase/config";
+import api from "./axios";
 
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+const baseUrl = import.meta.env.VITE_APP_BASE_URL + "/api";
 // const baseUrl = "http://localhost:5000/api";
 
 export const login = async ({ request }) => {
@@ -163,14 +164,7 @@ export const addReview = async ({ request }) => {
       }
     });
 
-    // Perform add review logic here
-    const response = await fetch(`${baseUrl}/reviews`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    });
+    const response = await api.post(`reviews`, review);
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -212,15 +206,9 @@ export const getAllReviews = async ({ request }) => {
   const sort = url.searchParams.get("sort");
 
   try {
-    const response = await fetch(
-      `${baseUrl}/reviews?filter=${filter}&sort=${sort}`
-    );
+    const response = await api.get(`reviews?filter=${filter}&sort=${sort}`);
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    return response.json();
+    return response.data;
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
@@ -370,13 +358,9 @@ export const sliderData = async () => {
 
 export const highestRated = async () => {
   try {
-    const response = await fetch(`${baseUrl}/reviews?limit=8&sort=rating`);
+    const response = await api.get(`reviews?limit=8&sort=rating`);
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    return response.json();
+    return response.data;
   } catch (error) {
     console.error(error);
     return toast.error(error.message);
